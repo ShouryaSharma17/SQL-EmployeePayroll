@@ -55,3 +55,15 @@ mysql> insert into payroll_service(name,salary,start) values
 Query OK, 3 rows affected (0.47 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 
+// UC4 -  Retrieving all the employee payroll data that is added to payroll service database.
+
+mysql> select * from payroll_service;
++----+---------+---------+------------+
+| id | name    | salary  | start      |
++----+---------+---------+------------+
+|  1 | Bill    | 1000000 | 2018-01-03 |
+|  2 | Teressa | 2000000 | 2019-11-13 |
+|  3 | Charlie | 3000000 | 2020-05-21 |
++----+---------+---------+------------+
+3 rows in set (0.03 sec)
+
