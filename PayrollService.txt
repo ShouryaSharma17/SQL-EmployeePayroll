@@ -23,3 +23,35 @@ mysql> show databases;
 mysql> use employeepayroll_service;
 Database changed
 
+// UC2 - Creating a employee payroll table in the payroll service database to manage employee payrolls.
+
+mysql> create table payroll_service(
+    -> id int unsigned not null auto_increment,
+    -> name varchar(150) not null,
+    -> salary double not null,
+    -> start date not null,
+    -> primary key (id)
+    -> );
+Query OK, 0 rows affected (6.45 sec)
+
+// Displaying the table properties
+mysql> desc payroll_service;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(150) | NO   |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.57 sec)
+
+// UC3 - Creating employee payroll data in the payroll service database as part of CRUD Operation.
+
+mysql> insert into payroll_service(name,salary,start) values
+    -> ('Bill', 1000000.00, '2018-01-03'),
+    -> ('Teressa', 2000000.00, '2019-11-13'),
+    -> ('Charlie', 3000000.00, '2020-05-21');
+Query OK, 3 rows affected (0.47 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
