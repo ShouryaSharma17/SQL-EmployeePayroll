@@ -128,3 +128,61 @@ mysql> select * from payroll_service;
 +----+---------+--------+---------+------------+
 3 rows in set (0.04 sec)
 
+
+// UC7 - Finding sum, average, min, max and number of male and female employees.
+
+// Retrieving maximum salary of each gender. 
+
+mysql> select gender,max(salary) from payroll_service group by gender;
++--------+-------------+
+| gender | max(salary) |
++--------+-------------+
+| M      |     3000000 |
+| F      |     2000000 |
++--------+-------------+
+2 rows in set (0.78 sec)
+
+// Retrieving minimum salary of each gender. 
+
+mysql> select gender,min(salary) from payroll_service group by gender;
++--------+-------------+
+| gender | min(salary) |
++--------+-------------+
+| M      |     1000000 |
+| F      |     2000000 |
++--------+-------------+
+2 rows in set (0.02 sec)
+
+// Retrieving sum of all salaries of each gender
+
+mysql> select gender,sum(salary) from payroll_service group by gender;
++--------+-------------+
+| gender | sum(salary) |
++--------+-------------+
+| M      |     4000000 |
+| F      |     2000000 |
++--------+-------------+
+2 rows in set (0.03 sec)
+
+// Retrieving the count of all employess of each gender
+
+mysql> select gender,count(name) from payroll_service group by gender;
++--------+-------------+
+| gender | count(name) |
++--------+-------------+
+| M      |           2 |
+| F      |           1 |
++--------+-------------+
+2 rows in set (0.05 sec)
+
+// Retrieving average of all salaries of each gender
+
+mysql> select gender,avg(salary) from payroll_service group by gender;
++--------+-------------+
+| gender | avg(salary) |
++--------+-------------+
+| M      |     2000000 |
+| F      |     2000000 |
++--------+-------------+
+2 rows in set (0.04 sec)
+
