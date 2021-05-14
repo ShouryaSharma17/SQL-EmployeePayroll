@@ -333,3 +333,41 @@ mysql> select * from payroll_service where name = 'Teressa';
 +----+---------+--------------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
 2 rows in set (0.00 sec)
 
+// UC11 IMPLEMENTING ER DIAGRAM
+
+mysql> create table department
+    -> (
+    -> dept_id int primary key,
+    -> dept_name varchar(20)
+    -> );
+Query OK, 0 rows affected (0.91 sec)
+
+mysql> insert into department values(1001,'CS'),(1002,'IT'),(1003,'SUPPORT');
+Query OK, 3 rows affected (0.18 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from department;
++---------+-----------+
+| dept_id | dept_name |
++---------+-----------+
+|    1001 | CS        |
+|    1002 | IT        |
+|    1003 | SUPPORT   |
++---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> alter table payroll_service add foreign key (dept_id) references department (dept_id);
+Query OK, 4 rows affected (5.33 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from payroll_service;
++----+---------+--------------+---------+--------+-----------+------------+-------------+--------+---------+------------+---------+
+| id | name    | phone_number | address | gender | basic_pay | deductions | taxable_pay | tax    | net_pay | start      | dept_id |
++----+---------+--------------+---------+--------+-----------+------------+-------------+--------+---------+------------+---------+
+|  1 | Bill    | NULL         | TBD     | M      |   1000000 |          0 |           0 |      0 |       0 | 2018-01-03 |    NULL |
+|  2 | Teressa | NULL         | TBD     | F      |   2000000 |          0 |           0 |      0 |       0 | 2019-11-13 |    NULL |
+|  3 | Charlie | NULL         | TBD     | M      |   3000000 |          0 |           0 |      0 |       0 | 2020-05-21 |    NULL |
+|  4 | Teressa | NULL         | TBD     | NULL   |   3000000 |    1000000 |     2000000 | 500000 | 1500000 | 2018-01-03 |    NULL |
++----+---------+--------------+---------+--------+-----------+------------+-------------+--------+---------+------------+---------+
+4 rows in set (0.02 sec)
+
